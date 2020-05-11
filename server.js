@@ -32,9 +32,7 @@ app.get('/', (req, res) => {
 });
 
 // Require all route
-// require('./src/routes/UserRoute')(app);
-// require('./src/routes/ProductRoute')(app);
-// require('./src/routes/TransactionRoute')(app);
-// require('./src/routes/TransactionHistoryRoute')(app);
+require('./src/routes/UserRoute')(app);
+require('./src/routes/HotelRoute')(app);
 
 app.listen(Port, () => console.log(`Running in Port : ${Port}`));
