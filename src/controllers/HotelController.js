@@ -37,14 +37,10 @@ exports.getAllHotel = (req, res) => {
             });
         }
 
-        let docs = {
-            listHotel: document
-        }
-
         return res.status(200).send({
             status: 200,
-            message: `Hotel List`,
-            data: docs
+            message: ``,
+            data: document
         });
     });
 };
