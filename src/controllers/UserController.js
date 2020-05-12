@@ -26,20 +26,20 @@ exports.create = (req, res) => {
                 message: `Cannot register, duplicate username found`
             });
         }
-    });
 
-    user.save((error, document) => {
-        if (error) {
-            return res.status(500).send({
-                status: 500,
-                message: "Some error occurred while registering the user.",
-                Exception: error
+        user.save((error, document) => {
+            if (error) {
+                return res.status(500).send({
+                    status: 500,
+                    message: "Some error occurred while registering the user.",
+                    Exception: error
+                });
+            }
+    
+            return res.status(200).send({
+                status: 200,
+                message: `Create user with username ${user.username} successfully`
             });
-        }
-
-        return res.status(200).send({
-            status: 200,
-            message: `Create user with username ${user.username} successfully`
         });
     });
 };
@@ -59,7 +59,7 @@ exports.checkLogin = (req, res) => {
             });
         }
 
-        if(document == null) {
+        if(document === null) {
             return res.status(400).send({
                 status: 400,
                 message: `User ${param.username} not found`
