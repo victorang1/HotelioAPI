@@ -20,7 +20,7 @@ exports.create = (req, res) => {
             });
         }
 
-        if(document != null) {
+        if(document !== null) {
             return res.status(400).send({
                 status: 400,
                 message: `Cannot register, duplicate username found`
