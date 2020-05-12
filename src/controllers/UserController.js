@@ -7,10 +7,31 @@ exports.create = (req, res) => {
         password: req.body.password
     });
 
+    let param = {
+        username: user.username
+    }
+
+    User.findOne(param, (error, document) => {
+        if (error) {
+            return res.status(500).send({
+                status: 500,
+                message: `Something error with the server`,
+                Exception: error
+            });
+        }
+
+        if(document != null) {
+            return res.status(400).send({
+                status: 400,
+                message: `Cannot register, duplicate username found`
+            });
+        }
+    });
+
     user.save((error, document) => {
         if (error) {
-            return res.status(404).send({
-                status: 404,
+            return res.status(500).send({
+                status: 500,
                 message: "Some error occurred while registering the user.",
                 Exception: error
             });
@@ -31,8 +52,8 @@ exports.checkLogin = (req, res) => {
 
     User.findOne(param, (error, document) => {
         if (error) {
-            return res.status(404).send({
-                status: 404,
+            return res.status(500).send({
+                status: 500,
                 message: `Something error occurred while logging in`,
                 Exception: error
             });
@@ -41,8 +62,7 @@ exports.checkLogin = (req, res) => {
         if(document == null) {
             return res.status(400).send({
                 status: 400,
-                message: `User ${param.username} not found`,
-                Exception: error
+                message: `User ${param.username} not found`
             });
         }
 

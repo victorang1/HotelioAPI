@@ -87,8 +87,8 @@ exports.update = (req, res) => {
 
     Hotel.findByIdAndUpdate(param, update, (error, document, result) => {
         if (error) {
-            return res.status(404).send({
-                status: 404,
+            return res.status(500).send({
+                status: 500,
                 message: `Hotel not found with id ${param._id}`,
                 Exception: error
             });
