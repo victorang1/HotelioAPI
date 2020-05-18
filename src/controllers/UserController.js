@@ -50,7 +50,9 @@ exports.checkLogin = (req, res) => {
         username: req.body.username
     };
 
-    User.findOne(param, (error, document) => {
+    let selectQuery = '_id username password';
+
+    User.findOne(param, selectQuery, (error, document) => {
         if (error) {
             return res.status(500).send({
                 status: 500,
@@ -75,7 +77,8 @@ exports.checkLogin = (req, res) => {
 
         return res.status(200).send({
             status: 200,
-            message: `Login success`
+            message: `Login success`,
+            data: document
         });
     });
 };
