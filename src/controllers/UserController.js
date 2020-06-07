@@ -82,3 +82,22 @@ exports.checkLogin = (req, res) => {
         });
     });
 };
+
+exports.getUsers = (req, res) => {
+
+    User.find().exec((error, document) => {
+        if (error) {
+            return res.status(404).send({
+                status: 404,
+                message: `Error while get list of user`,
+                Exception: error
+            });
+        }
+
+        return res.status(200).send({
+            status: 200,
+            message: ``,
+            data: document
+        });
+    });
+};

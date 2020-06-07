@@ -34,5 +34,7 @@ app.get('/', (req, res) => {
 // Require all route
 require('./src/routes/UserRoute')(app);
 require('./src/routes/HotelRoute')(app);
+require('./src/routes/RoomRoute')(app);
+require('./src/routes/RentRoute')(app);
 
 app.listen(Port, () => console.log(`Running in Port : ${Port}`));

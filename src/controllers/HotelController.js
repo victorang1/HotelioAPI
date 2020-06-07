@@ -62,7 +62,7 @@ exports.getHotelById = (req, res) => {
 
         return res.status(200).send({
             status: 200,
-            message: `${document.hotelName}`,
+            message: ``,
             data: document
         });
     });
