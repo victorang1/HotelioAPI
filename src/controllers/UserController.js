@@ -50,7 +50,7 @@ exports.checkLogin = (req, res) => {
         username: req.body.username
     };
 
-    let selectQuery = '_id username password';
+    let selectQuery = '_id username password role';
 
     User.findOne(param, selectQuery, (error, document) => {
         if (error) {
